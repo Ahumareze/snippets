@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+.pin_title_container{
+    /* background: rgba(15, 17, 20, 0.01); */
+    border: 2px solid #EFE5D9;
+    /* backdrop-filter: blur(202px); */
+    /* animation: pulse 1.5s infinite; */
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+}
