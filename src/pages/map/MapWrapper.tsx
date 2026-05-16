@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 export default function MapWrapper({pins}:{pins: ReactNode[]}){
     return(
-        <div className="w-[100%]">
+        <div className="w-[100%] fixed top-0 left-0">
             {/* {pins} */}
             <svg
                 viewBox="0 0 2604.51 3148.78"

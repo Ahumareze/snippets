@@ -1,14 +1,104 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PageContainer from "../../pageContainer/PageContainer";
 import MapWrapper from "./MapWrapper";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Map(){
+    const cloudTriggerRef = useRef(null);
+
+    const cloudOneRef = useRef(null);
+    const cloudTwoRef = useRef(null);
+    const cloudThreeRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+
+            const animations = [
+                {
+                  ref: cloudOneRef,
+                  vars: {
+                    top: "-30vh",
+                    left: "-120vw",
+                    scale: 1.4,
+                  },
+                },
+                {
+                  ref: cloudTwoRef,
+                  vars: {
+                    bottom: "-100vh",
+                    right: "-100vw",
+                    scale: 1.3,
+                  },
+                },
+                {
+                  ref: cloudThreeRef,
+                  vars: {
+                    top: "-100vh",
+                    right: "-100vw",
+                    scale: 1,
+                  },
+                },
+            ];
+
+            animations.forEach(({ ref, vars }) => {
+                gsap.to(ref.current, {
+                  ...vars,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: cloudTriggerRef.current,
+                    start: "top 90%",
+                    end: "bottom 90%",
+                    scrub: true,
+                    // markers: true,
+                  },
+                });
+            });
+        });
+    
+        return () => ctx.revert();
+    }, []);
+
     return(
-        <div className="min-h-screen w-full bg-red-500">
-            <MapWrapper
-                pins={[
-                    <DayOnePin />
-                ]}
-            />
-        </div>
+        <PageContainer>
+            <div className="w-full bg-[#C2AD9A]">
+                <MapWrapper
+                    pins={[
+                        <DayOnePin />
+                    ]}
+                />
+
+                
+                <img
+                    src="/images/cloud-1.png"
+                    alt="cloud"
+                    className="fixed top-[-20px] left-[-200px] scale-110 z-[103] w-[100vw]"
+                    ref={cloudOneRef}
+                />
+
+                <img
+                    src="/images/cloud-1.webp"
+                    alt="cloud"
+                    className="fixed bottom-[-100px] right-[-200px] z-[101] rotate-[180deg] w-[100vw]"
+                    ref={cloudTwoRef}
+                />
+
+                <img
+                    src="/images/cloud-2.png"
+                    alt="cloud"
+                    className="fixed top-[-150px] right-0 z-[102] w-[130vw]"
+                    ref={cloudThreeRef}
+                />
+                
+
+                <div className="w-full pt-[100vh]">
+                    <div className="h-screen w-full" ref={cloudTriggerRef} />
+                </div>
+            </div>
+        </PageContainer>
+        
     )
 };
 
