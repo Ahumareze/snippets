@@ -21,7 +21,7 @@ export default function Map(){
                   ref: cloudOneRef,
                   vars: {
                     top: "-30vh",
-                    left: "-120vw",
+                    left: "-130vw",
                     scale: 1.4,
                   },
                 },
@@ -49,8 +49,8 @@ export default function Map(){
                   ease: "none",
                   scrollTrigger: {
                     trigger: cloudTriggerRef.current,
-                    start: "top 90%",
-                    end: "bottom 90%",
+                    start: "top 95%",
+                    end: "bottom 95%",
                     scrub: true,
                     // markers: true,
                   },
