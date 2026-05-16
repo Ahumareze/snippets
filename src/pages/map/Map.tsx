@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageContainer from "../../pageContainer/PageContainer";
 import MapWrapper from "./MapWrapper";
+import DetailsContainer from "./DetailsContainer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,13 @@ export default function Map(){
     const cloudOneRef = useRef(null);
     const cloudTwoRef = useRef(null);
     const cloudThreeRef = useRef(null);
+
+    const detailsContainerRef = useRef(null);
+    const detailsContainerTriggerRef = useRef(null);
+
+    const containerContentRef = useRef(null);
+    const containerContentTriggerRef = useRef(null);
+
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -56,6 +64,30 @@ export default function Map(){
                   },
                 });
             });
+
+
+            gsap.to(detailsContainerRef.current, {
+                right: 0,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: detailsContainerTriggerRef.current,
+                    start: "-400px bottom",
+                    end: "top bottom",
+                    scrub: true,
+                    // markers: true,
+                },
+            })
+
+            gsap.to(containerContentRef.current, {
+                y: '-100%',
+                scrollTrigger: {
+                  trigger: containerContentTriggerRef.current,
+                  start: "top bottom",
+                  end: "bottom bottom",
+                  scrub: true,
+                  markers: true
+                }
+              })
         });
     
         return () => ctx.revert();
@@ -81,7 +113,7 @@ export default function Map(){
                 <img
                     src="/images/cloud-1.webp"
                     alt="cloud"
-                    className="fixed bottom-[-100px] right-[-200px] z-[101] rotate-[180deg] w-[100vw]"
+                    className="fixed bottom-[-100px] right-[-200px] z-[101] w-[100vw]"
                     ref={cloudTwoRef}
                 />
 
@@ -94,8 +126,16 @@ export default function Map(){
                 
 
                 <div className="w-full pt-[100vh]">
-                    <div className="h-screen w-full" ref={cloudTriggerRef} />
+                    <div className="h-screen" ref={cloudTriggerRef} />
+                    <div className="h-[10px]" ref={detailsContainerTriggerRef} />
+                    <div className="h-[300vh]" ref={containerContentTriggerRef} />
                 </div>
+
+
+                <DetailsContainer
+                    detailsContainerRef={detailsContainerRef}
+                    containerContentRef={containerContentRef}
+                />
             </div>
         </PageContainer>
         

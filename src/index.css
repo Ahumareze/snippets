@@ -24,3 +24,9 @@ body{
       transform: scale(1);
     }
 }
+
+.page_details_container{
+  background: linear-gradient(270deg, #2D1815 80%, rgba(45, 24, 21, 0) 100%);
+  opacity: 0.3;
+  backdrop-filter: blur(0px);
+}
