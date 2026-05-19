@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageContainer from "../../pageContainer/PageContainer";
 import MapWrapper from "./MapWrapper";
 import DetailsContainer from "./DetailsContainer";
+import FirstLineTransition from "../../components/FirstLineTransition";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +20,9 @@ export default function Map(){
 
     const containerContentRef = useRef(null);
     const containerContentTriggerRef = useRef(null);
+
+    const pathRef = useRef(null);
+    const pathRefTrigger = useRef(null)
 
 
     useEffect(() => {
@@ -93,13 +97,28 @@ export default function Map(){
         return () => ctx.revert();
     }, []);
 
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+          const length = pathRef.current.getTotalLength();
+          gsap.set(pathRef.current, { strokeDasharray: length, strokeDashoffset: length });
+          gsap.to(pathRef.current, {
+            strokeDashoffset: 0,
+            ease: 'none',
+            scrollTrigger: { trigger: pathRefTrigger.current, start: 'top center', end: 'bottom center', scrub: 1, markers: true },
+          });
+        });
+        return () => ctx.revert();
+      }, []);
+
     return(
         <PageContainer>
             <div className="w-full bg-[#C2AD9A]">
                 <MapWrapper
                     pins={[
-                        <DayOnePin />
+                        <DayOnePin />,
+                        <FirstLineTransition />
                     ]}
+                    pathRef={pathRef}
                 />
 
                 
@@ -128,7 +147,9 @@ export default function Map(){
                 <div className="w-full pt-[100vh]">
                     <div className="h-screen" ref={cloudTriggerRef} />
                     <div className="h-[10px]" ref={detailsContainerTriggerRef} />
-                    <div className="h-[300vh]" ref={containerContentTriggerRef} />
+                    <div className="h-[300vh]" ref={containerContentTriggerRef}>
+                        <div className="h-[100vh" ref={pathRefTrigger} />
+                    </div>
                 </div>
 
 

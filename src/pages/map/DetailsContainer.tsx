@@ -14,20 +14,33 @@ export default function DetailsContainer({detailsContainerRef, containerContentR
                             <p className="text-[20px] mt-[30px] font-aktivGrotesk">A brief introduction sets the tone before heading to the coast.</p>
 
 
-                            <p className="text-[20px] mt-[50vh] font-aktivGrotesk">At the beach, a short grounding moment invites stillness and arrival, followed by a picnic lunch of crayfish rolls and island produce with the first shared story.</p>
+                            <div className="mt-[50vh]">
+                                <p className="text-[20px] font-aktivGrotesk">At the beach, a short grounding moment invites stillness and arrival, followed by a picnic lunch of crayfish rolls and island produce with the first shared story.</p>
 
-                            <img
-                                src="./images/map-image-1.svg"
-                                alt=""
-                                className="w-full mt-[40px]"
-                            />
+                                <img
+                                    src="./images/map-image-1.svg"
+                                    alt=""
+                                    className="w-full mt-[40px]"
+                                />
+                            </div>
 
-                            <p className="text-[20px] mt-[50vh] font-aktivGrotesk">After lunch, guests travel south to Castle Rock for a one hour walk and explore, listening to a curated collection of island stories designed for the drives.</p>
-                            <img
-                                src="./images/map-image-2.svg"
-                                alt=""
-                                className="w-full mt-[40px]"
-                            />
+                            <div className="mt-[50vh]">
+                                <p className="text-[20px] font-aktivGrotesk">After lunch, guests travel south to Castle Rock for a one hour walk and explore, listening to a curated collection of island stories designed for the drives.</p>
+                                <img
+                                    src="./images/map-image-2.svg"
+                                    alt=""
+                                    className="w-full mt-[40px]"
+                                />
+                            </div>
+
+                            <div className="mt-[50vh]">
+                                <p className="text-[20px] font-aktivGrotesk">At Whitemark Wharf, tea and cake lead into real time, sunset drinks by the water, and a heartfelt community welcome.</p>
+                                <img
+                                    src="./images/map-image-3.svg"
+                                    alt=""
+                                    className="w-full mt-[40px]"
+                                />
+                            </div>
                         </div>
 
                         <SquigglyLine />
