@@ -1,11 +1,13 @@
 // import Home from "./pages/home/Home"
 
-import Map from "./pages/map/Map"
+// import BusCards from "./pages/busCards/BusCards"
+import RentFinder from "./pages/rentFinder/RentFinder"
+// import Map from "./pages/map/Map"
 
 function App() {
 
   return (
-    <Map />
+    <RentFinder />
   )
 }
 
