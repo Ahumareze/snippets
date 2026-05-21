@@ -1,5 +1,5 @@
 // import React from "react";
-import { GoogleMap, useLoadScript, Marker , OverlayView} from "@react-google-maps/api";
+import { GoogleMap, useLoadScript , OverlayView} from "@react-google-maps/api";
 
 const containerStyle = {
   width: "100vw",
@@ -10,6 +10,8 @@ const center = {
   lat: 6.5244, // Lagos default (change later)
   lng: 3.3792,
 };
+
+
 
 // Sample pins (replace with your own data later)
 const locations = [
