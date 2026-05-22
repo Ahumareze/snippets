@@ -58,8 +58,13 @@ const CustomMarker = ({ position, label }) => (
       position={position}
       mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
     >
-      <div className="w-[200px] h-[40px] bg-white rounded-xl shadow-lg flex items-center justify-center">
-        {label}
+      <div className="w-fit h-fit p-2 bg-white rounded-xl shadow-lg text-center">
+        <img
+          src="./images/apartment-1.jpg"
+          alt=""
+          className="size-[70px] rounded-lg object-cover"
+        />
+        <p className="text-sm text-green-600 font-medium mt-2">₦500k/Year</p>
       </div>
     </OverlayView>
   );
